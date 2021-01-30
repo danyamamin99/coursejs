@@ -1,0 +1,12 @@
+1. Качаем гит
+2. В консоле в папке проекта пишем git init - инициализируем проект
+   git config --global user.name "name" 
+   git config --global user.email "email"
+   git config --local user.name "name"
+   git config --local user.email "email"
+3. git add * / git add -A - добавляем все файлы
+4. git commit -m "..." - добавляем коммит
+5. git status - проверяем статус файлов
+6. git log - проверяем все коммиты  
+7. Создаем на github репозиторий
+8. По инструкции закидывает файлы на удаленный репозиторий

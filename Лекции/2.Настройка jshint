@@ -1,0 +1,19 @@
+1. Установить плагин jshint
+2. В консоле написать npm i -g jshint
+3. Настройка опций jshint - https://jshint.com/docs/options/
+4. Закинуть в папку проекта файл с названием  .jshintrs с опциями :
+{
+	"camelcase" : true,
+	"indent": 2,
+	"undef": true,
+	"quotmark": false,
+	"maxlen": 120,
+	"trailing": true,
+	"curly": true,
+	"strict": false,
+	"browser": true,
+	"devel": true,
+	"jquery": true,
+    "esversion": 9,
+    "node": true
+}
