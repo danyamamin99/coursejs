@@ -1,0 +1,10 @@
+Callback-функции выполняются только тогда когда дойдет до них очередь
+
+function foo(arr, callback) {
+  console.log(arr);
+  callback();
+}
+
+foo("JS", function() {
+  console.log("Изучаю!")
+});

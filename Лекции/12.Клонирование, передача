@@ -1,0 +1,35 @@
+const obj = {
+  a: 2,
+  b: 3,
+};
+const objNew = Object.assign({}, obj);
+objNew.a = 33;
+console.log(obj);
+console.log(objNew);
+// 
+const arr = ['1', '2', '3'];
+const arrNew = arr.slice();
+arrNew[1] = 212;
+console.log(arr);
+console.log(arrNew);
+// 
+const video = ['youtube', 'gloa'],
+      blogs = ['wp', 'vk'],
+      internet = [...video, ...blogs];
+console.log(internet);
+const ob = {
+  1: "a",
+  2: "b"
+};
+const obN = {...ob};
+obN[1] = 21;
+console.log(ob);
+console.log(obN);
+// 
+function test(a, b, c) {
+  console.log(a);
+  console.log(b);
+  console.log(c);
+}
+const ar = [1, 33, 2];
+test(...ar);

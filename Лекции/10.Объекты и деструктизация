@@ -1,0 +1,32 @@
+const option = {
+  name: "test",
+  age: 18,
+  color: {
+    border: "black",
+    bg: "red",
+  },
+  clgTest: function () {
+    console.log(this);
+  },
+};
+
+const {border, bg} = option.color; // деструктизация объектов
+console.log(border, bg);
+// console.log(option.color.bg);
+
+option.clgTest();
+console.log(Object.keys(option).length); // проверка сколько свойств имееет объект
+
+for (const key in option) {
+  if (typeof(option[key]) === 'object') {
+    for (const i in option[key]) {
+      console.log(`Свойство ${i} и его значение ${option[key][i]}`);
+    }
+  } else {
+    console.log(`Свойство ${key} и его значение ${option[key]}`);
+  }
+}
+
+for (const key in option) { //----- проверка каждого значения ключа на тип
+  console.log(typeof(option[key]));
+}
