@@ -18,24 +18,24 @@
 
 // btn.addEventListener('click', myAnimation);
 
-const wrapper = document.querySelector('.wrapper');
+// const wrapper = document.querySelector('.wrapper');
 
-const st = () => {
-  const box = document.querySelector('.box');
-  let count = 0;
+// const st = () => {
+//   const box = document.querySelector('.box');
+//   let count = 0;
 
-  countPlus();
+//   countPlus();
   
-  const id = setInterval(countPlus, 800);
+//   const id = setInterval(countPlus, 800);
   
-  function countPlus() {
-    if (count >= 420) {
-      clearInterval(id);
-    } else {
-      count += 4 * 2;
-      box.textContent = count;
-    }
-  }
-};
+//   function countPlus() {
+//     if (count >= 420) {
+//       clearInterval(id);
+//     } else {
+//       count += 4 * 2;
+//       box.textContent = count;
+//     }
+//   }
+// };
 
-st();
+// st();

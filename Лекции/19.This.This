@@ -1,0 +1,65 @@
+﻿'use strict';
+//  1. Обычная функция: this - window, если есть use strict - indefined
+function say() {
+  console.log(this);
+}
+say();
+// 2. Контекст у методов объекта - сам объект
+const obj = {
+  a: 4,
+  sss () {
+    console.log(this);
+    // выведет undefined, так как не найдет this
+    // function aaa() {
+    //   console.log(this);
+    // }
+    // aaa();
+    // вывед obj, так как обращается к родителю
+    // const bbb = () => { console.log(this); }
+    // bbb();
+  }
+};
+obj.sss();
+// 3. this в конструкторах и классах - новый экземляр объекта
+function USER(name, age) {
+  this.name = name;
+  this.age = age;
+}
+const f = new USER('Danya', 18);
+console.log(f.name);
+console.log(f.age);
+
+class An {
+  constructor (name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  hello() {
+    console.log(this.name + ', hello!');
+  }
+}
+const danya = new An('Danya', 21);
+danya.hello();
+// 4. Ручная привязка: call, aplly, bind
+function sayHello(surname) {
+  console.log(this);
+  console.log('Hello, ' + this.name + surname);
+}
+const anton = {
+  name: 'Anton'
+};
+sayHello.call(anton, ' K');
+sayHello.apply(anton, [' Kkk']);
+
+function count(num) {
+  return this*num;
+}
+const double = count.bind(2);
+console.log(double(3));
+console.log(double(11));
+
+// 5. Пример
+btn.addEventListener('click', function() {
+  this.style.width = 500 + 'px';
+  // при стрелочной функции нельзя использовать this
+});
