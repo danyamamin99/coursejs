@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const getTimeRemaining = endtime => {
 
     let total = Date.parse(endtime) - Date.parse(new Date());
-
     let d = Math.floor( (total / (1000 * 60 * 60 * 24)) );
     let h = Math.floor( (total / (1000 * 60 * 60) % 24) ); // общее количество часов делем сколько в одном дне часов
     let m = Math.floor( (total / (1000 * 60) % 60) );
@@ -96,18 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // МОДАЛ
 
   const modalBtns = document.querySelectorAll('[data-modal]'),
-        modalClose = document.querySelector('[data-close]'),
         modal = document.querySelector('.modal');
 
   
   const closeModal = () => {
-    modal.classList.toggle('show');
+    modal.classList.add('hide');
+    modal.classList.remove('show');
     document.body.style.overflow = '';
     clearTimeout(modalTimeId);
   };
 
   const openModal = () => {
-    modal.classList.toggle('show');
+    modal.classList.add('show');
+    modal.classList.remove('hide');
     document.body.style.overflow = 'hidden';
   };
 
@@ -118,14 +118,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const modalTimeId = setTimeout(openModal, 5000);
+  const modalTimeId = setTimeout(openModal, 50000);
 
   modalBtns.forEach(btn => {
     btn.addEventListener('click', openModal);
   });
 
   modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
+    if (event.target === modal || event.target.getAttribute('data-close') == '') {
       closeModal();
     }
   });
@@ -135,8 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
-  
-  modalClose.addEventListener('click', closeModal);
+
   window.addEventListener('scroll', showModalByScroll);
 
   // Использование класса - render MenuCard
@@ -211,6 +210,82 @@ document.addEventListener("DOMContentLoaded", () => {
     ".menu .container",
     "menu__item",
   ).render();
+  
+  // ФОРМЫ
 
+  const forms = document.querySelectorAll('form');
 
+  const message = {
+    loading: "icons/spinner.svg",
+    success: 'Спасибо! Скоро мы с вами свяжемся!',
+    failure: 'Что-то пошло не так...'
+  };
+
+  const thanksMessage = (message) => {
+    const modalDialog = document.querySelector('.modal__dialog');
+    modalDialog.classList.add('hide');
+
+    openModal();
+
+    const div = document.createElement('div');
+    div.classList.add('modal__dialog');
+    div.innerHTML = `
+      <div class="modal__content">
+        <div data-close class="modal__close">&times;</div>
+        <div class="modal__title">${message}</div>
+      </div>
+    `;
+
+    document.querySelector('.modal').append(div);
+    setTimeout(() => {
+      div.remove();
+      // modalDialog.classList.add('show');
+      modalDialog.classList.remove('hide');
+      closeModal();
+    }, 2000);
+  };
+
+  const postData = (form) => {
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let statusMessage = document.createElement('img');
+      statusMessage.style.cssText = `
+        display: block;
+        margin: 10px auto 0;
+      `;
+      statusMessage.src = message.loading;
+      form.insertAdjacentElement('afterend', statusMessage);
+
+      // Используем без JSON - не пишем headers, и не перебераем formData в объект
+      // Используем JSON
+      const formData = new FormData(form);
+      const obj = {};
+
+      formData.forEach((value, key) => {
+        obj[key] = value;
+      });
+
+      fetch('server.php', {
+        method: 'POST',
+        body: JSON.stringify(obj),
+        headers: {
+          'Content-type': 'application/json; charset=utf-8',
+        }
+      })
+      .then(response => response.text())
+      .then((data) => {
+        console.log(data);
+        thanksMessage(message.success);
+      })
+      .catch(() => thanksMessage(message.failure))
+      .finally(() => {
+        form.reset();
+        statusMessage.remove();
+      });
+    });
+  };
+
+  forms.forEach(form => postData(form));
 });
