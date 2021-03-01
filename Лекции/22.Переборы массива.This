@@ -1,0 +1,17 @@
+﻿let filter = [2000, 100, 400, 5000].filter(item => {
+  console.log(item);
+  return item < 500
+});
+console.log(filter);
+
+let map = ['arr', 'new', 'ArR'].map(item => item.toLowerCase());
+console.log(map);
+
+let reduce = [3, 2, 5].reduce((sum, value) => sum + value, 5);
+console.log(reduce);
+
+let some = ['2', 5, 'asdsa'].some(item => typeof(item) == 'number');
+console.log(some);
+
+let every = ['2', 5, 'asdsa'].every(item => typeof(item) == 'number');
+console.log(every);

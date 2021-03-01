@@ -76,49 +76,68 @@
       
       // }, 2000);
       
-console.log('Запрос данных..');
+// console.log('Запрос данных..');
 
-const promise = new Promise((resolve, reject) => {
+// const promise = new Promise((resolve, reject) => {
 
-  setTimeout(() => {
-    console.log('Подготовка данных...');
+//   setTimeout(() => {
+//     console.log('Подготовка данных...');
 
-    const product = {
-      name: 'TV',
-      price: 2000
-    };
+//     const product = {
+//       name: 'TV',
+//       price: 2000
+//     };
 
-    resolve(product);
-  }, 2000);
+//     resolve(product);
+//   }, 2000);
 
-});
+// });
 
-promise.then((product) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log(product);
-      resolve(product);
-    }, 2000);
-  });
-}).then((data) => {
-    console.log('2');
-    data.value = 3;
-    return data;
-}).then((data) => {
-  console.log('3');
-  console.log(data);
-});
+// promise.then((product) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log(product);
+//       resolve(product);
+//     }, 2000);
+//   });
+// }).then((data) => {
+//     console.log('2');
+//     data.value = 3;
+//     return data;
+// }).then((data) => {
+//   console.log('3');
+//   console.log(data);
+// });
 // .catch() .finally()
 // Свойства Promise.all() - проверяет все ли промисы готовы
 // Свойство Promise.race() - кто быстрее выполнился
 
-const test = (time) => {
-  return new Promise(res => {
-    setTimeout(() => res(), time);
-  });
-};
+// const test = (time) => {
+//   return new Promise(res => {
+//     setTimeout(() => res(), time);
+//   });
+// };
 // test(5000).then(() => console.log('5000'));
 // test(7000).then(() => console.log('7000'));
 
-Promise.race([test(3000), test(5000)]).then(() => console.log('race'));
-Promise.all([test(3000), test(5000)]).then(() => console.log('all'));
+// Promise.race([test(3000), test(5000)]).then(() => console.log('race'));
+// Promise.all([test(3000), test(5000)]).then(() => console.log('all'));
+
+
+// let filter = [2000, 100, 400, 5000].filter(item => {
+//   console.log(item);
+//   return item < 500
+// });
+// console.log(filter);
+
+// let map = ['arr', 'new', 'ArR'].map(item => item.toLowerCase());
+// console.log(map);
+
+// let reduce = [3, 2, 5].reduce((sum, value) => sum + value, 5);
+// console.log(reduce);
+
+// let some = ['2', 5, 'asdsa'].some(item => typeof(item) == 'number');
+// console.log(some);
+
+// let every = ['2', 5, 'asdsa'].every(item => typeof(item) == 'number');
+// console.log(every);

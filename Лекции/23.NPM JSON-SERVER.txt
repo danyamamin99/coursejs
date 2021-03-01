@@ -1,0 +1,6 @@
+1. npm install - если нужно его установить
+2. npm init - инициализируем
+3. npm json-server (либо другой пакет) --save-dev      - для разработки
+   npm json-server (либо другой пакет) --save          - для работы
+   npm json-server (либо другой пакет) -g --save-dev   - для разработки глобально
+4. npx json-server db.json
