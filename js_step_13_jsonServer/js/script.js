@@ -290,9 +290,9 @@ document.addEventListener("DOMContentLoaded", () => {
   forms.forEach(form => postData(form));
 
 
-  fetch('http://localhost:3000/menu')
-    .then(response => response.json())
-    .then(data => console.log(data));
+  // fetch('http://localhost:3000/menu')
+  //   .then(response => response.json())
+  //   .then(data => console.log(data));
 
 
 });
