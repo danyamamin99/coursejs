@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", () => {
         offerSliderWrapper = document.querySelector('.offer__slider-wrapper'),
         offerSliderBtns = document.querySelector('.offer__slider-counter'),
         width = window.getComputedStyle(offerSliderWrapper).width;
-
+  
   let index = 1;
   let offset = 0;
 
@@ -424,13 +424,15 @@ document.addEventListener("DOMContentLoaded", () => {
     dots[index - 1].style.opacity = '1';
   };
 
+  const deleteNotDigits = (str) => +str.replace(/\D/g, '');
+
   offerSliderBtns.addEventListener('click', (e) => {
     const target = e.target;
 
     if (target.closest('.offer__slider-prev')) {
 
-      if (offset == 0) offset = width.slice(0, width.length - 2) * (offerSlide.length - 1);
-      else offset -= +width.slice(0, width.length - 2);
+      if (offset == 0) offset = deleteNotDigits(width) * (offerSlide.length - 1);
+      else offset -= deleteNotDigits(width);
 
       if (index == 1) index = offerSlide.length;
       else index--;
@@ -440,8 +442,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (target.closest('.offer__slider-next')) {
 
-      if (offset == width.slice(0, width.length - 2) * (offerSlide.length - 1)) offset = 0;
-      else offset += +width.slice(0, width.length - 2);
+      if (offset == deleteNotDigits(width) * (offerSlide.length - 1)) offset = 0;
+      else offset += deleteNotDigits(width);
 
       if (index == offerSlide.length) index = 1;
       else index++;
@@ -456,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const slideTo = e.target.getAttribute('data-slide-to');
       
       index = slideTo;
-      offset = width.slice(0, width.length - 2) * (slideTo - 1);
+      offset = deleteNotDigits(width) * (slideTo - 1);
 
       showSlide(offset, index);
     });

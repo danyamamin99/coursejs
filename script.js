@@ -141,3 +141,11 @@
 
 // let every = ['2', 5, 'asdsa'].every(item => typeof(item) == 'number');
 // console.log(every);
+
+
+// РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
+
+console.log('Ann'.search(/t/));
+console.log('Ann'.match(/N/ig));
+console.log('An.n.'.replace(/\./g, '*'));
+console.log('MY NAME R2D2'.match(/\W/g));
