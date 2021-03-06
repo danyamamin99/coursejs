@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const total = document.querySelector('#total'),
   //       current = document.querySelector('#current'),
   //       offerSlide = document.querySelectorAll('.offer__slide'),
-  //       offerSliderBtns = document.querySelector('.offer__slider-counter');
+  //       sliderBtns = document.querySelector('.offer__slider-counter');
 
   // let index = 0;
 
@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   current.textContent = getZero(index + 1);
   // };
 
-  // offerSliderBtns.addEventListener('click', (e) => {
+  // sliderBtns.addEventListener('click', (e) => {
   //   const target = e.target;
     
   //   if (target.closest('.offer__slider-prev')) {
@@ -353,11 +353,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = document.querySelector('#total'),
         current = document.querySelector('#current'),
         offerSlide = document.querySelectorAll('.offer__slide'),
-        offerSlider = document.querySelector('.offer__slider'),
-        offerSliderInner = document.querySelector('.offer__slider-inner'),
-        offerSliderWrapper = document.querySelector('.offer__slider-wrapper'),
-        offerSliderBtns = document.querySelector('.offer__slider-counter'),
-        width = window.getComputedStyle(offerSliderWrapper).width;
+        slider = document.querySelector('.offer__slider'),
+        sliderInner = document.querySelector('.offer__slider-inner'),
+        sliderWrapper = document.querySelector('.offer__slider-wrapper'),
+        sliderBtns = document.querySelector('.offer__slider-counter'),
+        width = window.getComputedStyle(sliderWrapper).width;
   
   let index = 1;
   let offset = 0;
@@ -365,14 +365,14 @@ document.addEventListener("DOMContentLoaded", () => {
   total.textContent = getZero(offerSlide.length);
   current.textContent = getZero(index);
 
-  offerSliderInner.style.cssText = `
+  sliderInner.style.cssText = `
     width: ${100 * offerSlide.length}%;
     display: flex;
     transition: all 0.4s ease;
   `;
-  offerSliderWrapper.style.overflow = 'hidden';
+  sliderWrapper.style.overflow = 'hidden';
   offerSlide.forEach(slide => slide.style.width = width);
-  offerSlider.style.position = 'relative';
+  slider.style.position = 'relative';
 
   const indicators = document.createElement('ol');
   const dots = [];
@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
       margin-left: 15%;
       list-style: none;
   `; // Если хотите - добавьте в стили, но иногда у нас нет доступа к стилям
-  offerSlider.append(indicators);
+  slider.append(indicators);
 
   for (let i = 0; i < offerSlide.length; i++) {
     const dot = document.createElement('li');
@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const showSlide = (offset, index) => {
-    offerSliderInner.style.transform = `translateX(${-offset}px)`;    
+    sliderInner.style.transform = `translateX(${-offset}px)`;    
     current.textContent = getZero(index);
     dots.forEach(dot => dot.style.opacity = '.5');
     dots[index - 1].style.opacity = '1';
@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const deleteNotDigits = (str) => +str.replace(/\D/g, '');
 
-  offerSliderBtns.addEventListener('click', (e) => {
+  sliderBtns.addEventListener('click', (e) => {
     const target = e.target;
 
     if (target.closest('.offer__slider-prev')) {

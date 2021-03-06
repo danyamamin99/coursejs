@@ -144,8 +144,51 @@
 
 
 // РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ
+// console.log('Ann'.search(/t/));
+// console.log('Ann'.match(/N/ig));
+// console.log('An.n.'.replace(/\./g, '*'));
+// console.log('MY NAME R2D2'.match(/\W/g));
 
-console.log('Ann'.search(/t/));
-console.log('Ann'.match(/N/ig));
-console.log('An.n.'.replace(/\./g, '*'));
-console.log('MY NAME R2D2'.match(/\W/g));
+// class User {
+//   constructor (name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   static n = 0;
+//   #surname = 'Mamin';
+
+//   static inc() {
+//     return this.n++;
+//   }
+
+//   say () {
+//     console.log(`${this.name} ${this.#surname}, ${this.age}`);
+//   }
+
+//   get surname() {
+//     return this.#surname;
+//   }
+//   set surname (sn) {
+//     this.#surname = sn;
+//   }
+
+// }
+
+// class R extends User {
+//   sss () {
+//     console.log('f');
+//   }
+// }
+
+// const dm = new User('Danya', 21);
+// dm.say();
+// // console.log(dm.surname);
+// dm.surname = 'MAMIN';
+// dm.say();
+// console.log(User.inc());
+// console.log(User.n);
+// console.log(R.n);
+// console.log(User.inc());
+// console.log(User.n);
+// console.log(R.n);
+// console.log(dm.n); // undefined

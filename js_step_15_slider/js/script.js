@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const total = document.querySelector('#total'),
   //       current = document.querySelector('#current'),
   //       offerSlide = document.querySelectorAll('.offer__slide'),
-  //       offerSliderBtns = document.querySelector('.offer__slider-counter');
+  //       sliderBtns = document.querySelector('.offer__slider-counter');
 
   // let index = 0;
 
@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   current.textContent = getZero(index + 1);
   // };
 
-  // offerSliderBtns.addEventListener('click', (e) => {
+  // sliderBtns.addEventListener('click', (e) => {
   //   const target = e.target;
     
   //   if (target.closest('.offer__slider-prev')) {
@@ -353,10 +353,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const total = document.querySelector('#total'),
         current = document.querySelector('#current'),
         offerSlide = document.querySelectorAll('.offer__slide'),
-        offerSliderInner = document.querySelector('.offer__slider-inner'),
-        offerSliderWrapper = document.querySelector('.offer__slider-wrapper'),
-        offerSliderBtns = document.querySelector('.offer__slider-counter'),
-        width = window.getComputedStyle(offerSliderWrapper).width;
+        sliderInner = document.querySelector('.offer__slider-inner'),
+        sliderWrapper = document.querySelector('.offer__slider-wrapper'),
+        sliderBtns = document.querySelector('.offer__slider-counter'),
+        width = window.getComputedStyle(sliderWrapper).width;
 
   let index = 1;
   let offset = 0;
@@ -364,14 +364,14 @@ document.addEventListener("DOMContentLoaded", () => {
   total.textContent = getZero(offerSlide.length);
   current.textContent = getZero(index);
 
-  offerSliderInner.style.cssText = `
+  sliderInner.style.cssText = `
     width: ${100 * offerSlide.length}%;
     display: flex;
     transition: all 0.4s ease;
   `;
-  offerSliderWrapper.style.overflow = 'hidden';
+  sliderWrapper.style.overflow = 'hidden';
 
-  offerSliderBtns.addEventListener('click', (e) => {
+  sliderBtns.addEventListener('click', (e) => {
     const target = e.target;
 
     if (target.closest('.offer__slider-prev')) {
@@ -382,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (index == 1) index = offerSlide.length;
       else index--;
 
-      offerSliderInner.style.transform = `translateX(${-offset}px)`;    
+      sliderInner.style.transform = `translateX(${-offset}px)`;    
       current.textContent = getZero(index); 
     }
 
@@ -394,7 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (index == offerSlide.length) index = 1;
       else index++;
 
-      offerSliderInner.style.transform = `translateX(${-offset}px)`;    
+      sliderInner.style.transform = `translateX(${-offset}px)`;    
       current.textContent = getZero(index);  
     }
 
