@@ -3,4 +3,12 @@
 3. npm json-server (либо другой пакет) --save-dev      - для разработки
    npm json-server (либо другой пакет) --save          - для работы
    npm json-server (либо другой пакет) -g --save-dev   - для разработки глобально
-4. npx json-server db.json
+4. npx json-server db.json - запуск json-servera
+5. npm i webpack - установление webpack
+6. npx webpack - запуск webpack
+7. npm install --save-dev @babel/core @babel/cli @babel/preset-env - установка пакетов бабел
+8. npm install --save @babel/polyfill
+9. записать свойство в package.json - "browserslist": [ "> 1%"]
+10. добавить в wepback module
+11. npm i --save-dev babel-loader   - установка babel-loader
+12. npm i --save-dev core-js     - установка core js
